@@ -1,9 +1,9 @@
-import React from 'react';
 import Card from './common/Card.tsx';
 import ErrorMessage from './common/ErrorMessage.tsx';
 import CardSkeleton from './skeleton/CardSkeleton.tsx';
 import { useDashboard } from '../context/DashboardProvider.tsx';
 import { Building2, TrendingUp, Users, Wrench } from 'lucide-react';
+import { safeRound, getSafeNumber } from '../utils/safeCalculations';
 
 export default function Cards() {
   const { error, loading, tools, analytics, departments } = useDashboard();
@@ -27,29 +27,29 @@ export default function Cards() {
           <>
             <Card
               label="Monthly Budget"
-              value={`€${new Intl.NumberFormat('en-US').format(analytics?.budget_overview.current_month_total)}/€${Math.round(analytics?.budget_overview.monthly_limit / 1000)}k`}
-              delta={analytics?.kpi_trends.budget_change}
+              value={`€${getSafeNumber(analytics?.budget_overview.current_month_total).toLocaleString()}/€${safeRound(analytics && analytics?.budget_overview.monthly_limit / 1000)}k`}
+              delta={analytics && analytics.kpi_trends.budget_change}
               color="emerald"
               icon={<TrendingUp size={20} />}
             />
             <Card
               label="Active Tools"
-              value={tools?.length}
-              delta={analytics?.kpi_trends.tools_change}
+              value={tools && tools.length}
+              delta={analytics && analytics.kpi_trends.tools_change}
               color="purple"
               icon={<Wrench size={20} />}
             />
             <Card
               label="Departments"
               value={totalDepartments}
-              delta={analytics?.kpi_trends.departments_change}
+              delta={analytics && analytics.kpi_trends.departments_change}
               color="red"
               icon={<Building2 size={20} />}
             />
             <Card
               label="Cost/User"
-              value={`€${analytics?.cost_analytics.cost_per_user}`}
-              delta={analytics?.kpi_trends.cost_per_user_change}
+              value={`€${getSafeNumber(analytics?.cost_analytics.cost_per_user)}`}
+              delta={analytics && analytics.kpi_trends.cost_per_user_change}
               color="pink"
               icon={<Users size={20} />}
             />
