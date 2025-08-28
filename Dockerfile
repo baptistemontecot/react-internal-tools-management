@@ -1,5 +1,4 @@
 FROM node:24.6.0-alpine
-LABEL authors="baptistemontecot"
 
 WORKDIR /app
 
