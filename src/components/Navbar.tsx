@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle.tsx';
+import { useFilterStore } from '../stores/useFilterStore.tsx';
 import { Zap, Bell, Menu, Search, Settings, X } from 'lucide-react';
 
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const searchTerm = useFilterStore((state) => state.searchTerm);
+  const setSearchTerm = useFilterStore((state) => state.setSearchTerm);
 
   function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
@@ -74,6 +78,8 @@ export default function NavBar() {
                   id="search-navbar"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                   placeholder="Search tools..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
               <ThemeToggle />
@@ -122,6 +128,8 @@ export default function NavBar() {
                 id="search-navbar"
                 className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                 placeholder="Search tools..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <div className="relative flex justify-end">
