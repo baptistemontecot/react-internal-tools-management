@@ -1,2 +1,3 @@
-export * from './api/tools';
-export * from './api/department';
+export * from './api/tools.ts';
+export * from './api/analytics';
+export * from './api/departments';

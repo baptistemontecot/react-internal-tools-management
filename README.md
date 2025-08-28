@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+## **📖 README FINAL OBLIGATOIRE**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prérequis 👨🏼‍🏫
 
-Currently, two official plugins are available:
+- [Node](https://nodejs.org/fr) (v24.6.0)
+- [Git](https://git-scm.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### **🚀 Quick Start**
 
-## Expanding the ESLint configuration
+### Clone et démarrage en une commande
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+  git clone git@github.com:baptistemontecot/react-internal-tools-management.git
+  cd internal-tools-dashboard
+  npm install && npm run dev
+```
+Dashboard disponible sur http://localhost:5173/
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### **🏗️ Architecture**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+📦src/
+├── 📂components/  # Design system réutilisé (Cards, Buttons, Skeletons)
+├── 📂context/     # Provider
+├── 📂hooks/       # useDashboard, useFilters
+├── 📂pages/       # Dashboard → Tools → Analytics
+│   ├── Dashboard/ # KPIs Cards + Recent Tools
+│   ├── Tools/     # Catalogue + Filtres avancés
+│   └── Analytics/ # Charts + Insights
+├── 📂stores/      # Zustand pour state management
+├── 📂types/
+└── 📂utils/       # Axios, Filter
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### **🎨 Design System Evolution**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+- Theme dark moderne, gradients purple/blue/pink
+- Color palette stricte (emerald, purple, red, pink)
+- Typography Inter, Icons Lucide React
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### **📊 Data Integration Strategy**
+
+JSON Server Backend : `https://tt-jsonserver-01.alt-tools.tech`
+- GET /analytics → KPIs Dashboard
+- GET /tools → Catalogue complet + filtres 
+- GET /departments → Filtres par département 
+- Relations : Tools ↔ Users ↔ Departments
+- Real-time sync avec error/loading states
+
+### **📱 Progressive Responsive Design**
+
+Mobile-first breakpoints :
+- Mobile ≤640px : Stack layouts, hamburger menu, cards single column
+- Tablet 640-1024px : Mixed layouts, collapsible panels, 2-col grids
+- Desktop ≥1024px : Full layouts, multi-column, complete interactions
+
+### **🧪 Testing Strategy**
+
+*Tests unitaires et stratégie QA sur l'ensemble*
+
+### **⚡ Performance Optimizations**
+
+Lazy loading des charts
+- Skeleton screens créatifs pendant loading
+- Memoization des filtres complexes
+- Image optimization des tool icons
+
+### **🎯 Design Consistency Approach**
+
+*Comment vous avez maintenu la cohérence sans mockups J7-J8*
+
+### **📈 Data Visualization Philosophy**
+
+*Choix de charts library et intégration design system*
+
+### **🔮 Next Steps / Complete App Vision**
+
+Export capabilities → PDF/Excel avec style cohérent
+- Création d'un conteneur Node
+- User management → Roles, permissions, onboarding
+- API ouverte → Intégrations tierces
+- Mobile app native → Extension PWA

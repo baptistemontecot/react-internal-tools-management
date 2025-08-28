@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
-import type { Department } from '../types';
 import api from './../utils/api';
+import { useEffect, useState } from 'react';
+import type { Departments } from '../types';
 
 export function useDepartments() {
-  const [departments, setDepartments] = useState<Department[]>([]);
+  const [departments, setDepartments] = useState<Departments[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setLoading(true);
     api
-      .get<Department[]>('/departments')
+      .get<Departments[]>('/departments')
       .then((res) => setDepartments(res.data))
-      .catch((err) => setError(err))
+      .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
 

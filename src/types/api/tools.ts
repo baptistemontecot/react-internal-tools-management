@@ -1,4 +1,4 @@
-export interface Tool {
+export type Tool = {
   id: number;
   name: string;
   description: string;
@@ -13,4 +13,6 @@ export interface Tool {
   icon_url: string;
   created_at: string;
   updated_at: string;
-}
+};
+
+export type Tools = Tool[];

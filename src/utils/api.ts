@@ -1,5 +1,4 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
-import type { Department } from '../types';
 
 // Configuration de l'instance Axios
 const api: AxiosInstance = axios.create({
@@ -23,13 +22,3 @@ api.interceptors.response.use(
 );
 
 export default api;
-
-export function mapDepartment(apiData: any): Department {
-  return {
-    id: apiData.id,
-    name: apiData.name,
-    description: apiData.description,
-    createdAt: apiData.created_at,
-    updatedAt: apiData.updated_at,
-  };
-}
