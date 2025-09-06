@@ -3,7 +3,7 @@ import { Box } from 'lucide-react';
 
 interface ToolIconProps {
   iconUrl: string;
-  name: string;
+  name?: string;
   alt: string;
   className?: string;
 }

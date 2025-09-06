@@ -33,7 +33,7 @@ export default function Cards() {
               icon={<TrendingUp size={20} />}
             />
             <Card
-              label="Active Tools"
+              label="Active ToolsTable"
               value={tools && tools.length}
               delta={analytics && analytics.kpi_trends.tools_change}
               color="purple"

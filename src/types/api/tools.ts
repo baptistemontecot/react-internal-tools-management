@@ -1,3 +1,5 @@
+export type ToolStatus = 'all' | 'active' | 'unused' | 'expiring' | 'unconfigured';
+
 export type Tool = {
   id: number;
   name: string;
@@ -7,7 +9,7 @@ export type Tool = {
   monthly_cost: number;
   previous_month_cost: number;
   owner_department: string;
-  status: string;
+  status: ToolStatus;
   website_url: string;
   active_users_count: number;
   icon_url: string;

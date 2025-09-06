@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import ThemeToggle from './ThemeToggle.tsx';
-import { useFilterStore } from '../stores/useFilterStore.tsx';
-import { Zap, Bell, Menu, Search, Settings, X } from 'lucide-react';
+import { Zap, Bell, Menu, Settings, X } from 'lucide-react';
 
 export default function NavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const searchTerm = useFilterStore((state) => state.searchTerm);
-  const setSearchTerm = useFilterStore((state) => state.setSearchTerm);
+  // const searchTerm = useFilterStore((state) => state.searchTerm);
+  // const setSearchTerm = useFilterStore((state) => state.setSearchTerm);
 
   function useIsMobile() {
     const [isMobile, setIsMobile] = useState(false);
@@ -25,8 +24,6 @@ export default function NavBar() {
   const links = [
     { href: '/', label: 'Dashboard', current: true },
     { href: '/tools', label: 'Tools' },
-    { href: '/analytics', label: 'Analytics' },
-    { href: '/', label: 'Settings' },
   ];
 
   return (
@@ -68,20 +65,20 @@ export default function NavBar() {
           </div>
           {!useIsMobile() && (
             <div className="text-md space-beetween flex items-center justify-end space-x-3 sm:items-stretch">
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500">
-                  <Search />
-                  <span className="sr-only">Search icon</span>
-                </div>
-                <input
-                  type="text"
-                  id="search-navbar"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                  placeholder="Search tools..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
+              {/*<div className="relative">*/}
+              {/*  <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500">*/}
+              {/*    <Search />*/}
+              {/*    <span className="sr-only">Search icon</span>*/}
+              {/*  </div>*/}
+              {/*  <input*/}
+              {/*    type="text"*/}
+              {/*    id="search-navbar"*/}
+              {/*    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"*/}
+              {/*    placeholder="Search tools..."*/}
+              {/*    value={searchTerm}*/}
+              {/*    onChange={(e) => setSearchTerm(e.target.value)}*/}
+              {/*  />*/}
+              {/*</div>*/}
               <ThemeToggle />
               <button type="button" className="relative rounded-full px-3 py-2 dark:hover:text-white">
                 <Bell className="dark:text-gray-300" />
@@ -118,20 +115,20 @@ export default function NavBar() {
 
         {useIsMobile() && (
           <div className="text-md flex max-w-7xl items-center justify-between px-4 pb-6">
-            <div className="relative w-[250px]">
-              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500">
-                <Search />
-                <span className="sr-only">Search icon</span>
-              </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                placeholder="Search tools..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
+            {/*<div className="relative w-[250px]">*/}
+            {/*  <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-gray-500">*/}
+            {/*    <Search />*/}
+            {/*    <span className="sr-only">Search icon</span>*/}
+            {/*  </div>*/}
+            {/*  <input*/}
+            {/*    type="text"*/}
+            {/*    id="search-navbar"*/}
+            {/*    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"*/}
+            {/*    placeholder="Search tools..."*/}
+            {/*    value={searchTerm}*/}
+            {/*    onChange={(e) => setSearchTerm(e.target.value)}*/}
+            {/*  />*/}
+            {/*</div>*/}
             <div className="relative flex justify-end">
               <ThemeToggle />
               <button type="button" className="relative rounded-full px-3 py-2 dark:hover:text-white">

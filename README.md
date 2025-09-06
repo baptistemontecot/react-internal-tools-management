@@ -23,9 +23,9 @@ Dashboard disponible sur http://localhost:5173/
 ├── 📂components/  # Design system réutilisé (Cards, Buttons, Skeletons)
 ├── 📂context/     # Provider
 ├── 📂hooks/       # useDashboard, useFilters
-├── 📂pages/       # Dashboard → Tools → Analytics
-│   ├── Dashboard/ # KPIs Cards + Recent Tools
-│   ├── Tools/     # Catalogue + Filtres avancés
+├── 📂pages/       # Dashboard → ToolsTable → Analytics
+│   ├── Dashboard/ # KPIs Cards + Recent ToolsTable
+│   ├── ToolsTable/     # Catalogue + Filtres avancés
 │   └── Analytics/ # Charts + Insights
 ├── 📂stores/      # Zustand pour state management
 ├── 📂types/
@@ -44,7 +44,7 @@ JSON Server Backend : `https://tt-jsonserver-01.alt-tools.tech`
 - GET /analytics → KPIs Dashboard
 - GET /tools → Catalogue complet + filtres 
 - GET /departments → Filtres par département 
-- Relations : Tools ↔ Users ↔ Departments
+- Relations : ToolsTable ↔ Users ↔ Departments
 - Real-time sync avec error/loading states
 
 ### **📱 Progressive Responsive Design**

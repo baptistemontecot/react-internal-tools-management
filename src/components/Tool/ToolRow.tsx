@@ -1,5 +1,6 @@
 import type { Tool } from '../../types';
 import ToolIcon from './../common/ToolIcon.tsx';
+import Status from '../common/badges/Status.tsx';
 
 export default function ToolRow({ tool }: { tool: Tool }) {
   return (
@@ -12,17 +13,7 @@ export default function ToolRow({ tool }: { tool: Tool }) {
       <div>{tool.active_users_count}</div>
       <div>{tool.monthly_cost} €</div>
       <div>
-        <span
-          className={`inline-block rounded-md px-2 py-1 text-xs font-semibold capitalize ${
-            tool.status === 'active'
-              ? 'bg-gradient-to-r from-green-400 to-green-600 text-white'
-              : tool.status === 'expiring'
-                ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white'
-                : 'bg-gradient-to-r from-red-400 to-red-600 text-white'
-          }`}
-        >
-          {tool.status}
-        </span>
+        <Status status={tool.status} />
       </div>
     </div>
   );
